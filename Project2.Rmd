@@ -1,0 +1,41 @@
+---
+title: "Statistical Inference Course Project Part2"
+author: "Atsuko Yamamoto"
+date: "January 24, 2015"
+output: pdf_document
+---
+# Part2 Basic inferential data analysis.
+## 1. Load the ToothGrowth data and perform some basic exploratory data analyses
+```{r}
+setwd("~/Rdata/Inference")
+library(datasets)
+data(ToothGrowth)
+```
+## 2. Provide a basic summary of the data.
+```{r}
+str( ToothGrowth)
+summary(ToothGrowth)
+table(ToothGrowth$supp,ToothGrowth$dose)
+# barplot
+library(ggplot2)
+par(mfrow = c(1, 2))
+boxplot(len ~ dose, data=ToothGrowth,subset = supp == "VC", col = "yellow", main="VC", xlab = "Vitamin C dose mg", ylab = "tooth length", ylim = c(5, 35))
+boxplot(len ~ dose, data=ToothGrowth,subset = supp == "OJ", col = "orange", main="OJ", xlab= "Vitamin C dose mg", ylab = "tooth length", ylim = c(5, 35))
+```
+## 3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)
+
+We used t.test in order to perform confidence intervals.
+First, comparing whether there is a difference in the growth of the teeth depending on the type of supplement "OJ" or "VC".
+
+```{r}
+t.test(len ~ supp, data=ToothGrowth, var.equal=TRUE)
+```
+The p-value is 0.06. We can not reject the null hypothesis that  Growth of teeth there is a difference depending on the type of supplements.
+```{r}
+t.test(ToothGrowth$len[ToothGrowth$dose==0.5], ToothGrowth$len[ToothGrowth$dose==1], var.equal=TRUE)
+t.test(ToothGrowth$len[ToothGrowth$dose==0.5], ToothGrowth$len[ToothGrowth$dose==2], var.equal=TRUE)
+t.test(ToothGrowth$len[ToothGrowth$dose==1], ToothGrowth$len[ToothGrowth$dose==2], var.equal=TRUE)
+```
+For all three dose level pairs, the p-value is less than 0.05. The mean tooth length increases on raising the dose level. This indicates that we can reject the null hypothesis, and establish that increasing the dose level leads to an increase in tooth length.
+
+## 4. State your conclusions and the assumptions needed for your conclusions.

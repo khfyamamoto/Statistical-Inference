@@ -39,3 +39,14 @@ t.test(ToothGrowth$len[ToothGrowth$dose==1], ToothGrowth$len[ToothGrowth$dose==2
 For all three dose level pairs, the p-value is less than 0.05. The mean tooth length increases on raising the dose level. This indicates that we can reject the null hypothesis, and establish that increasing the dose level leads to an increase in tooth length.
 
 ## 4. State your conclusions and the assumptions needed for your conclusions.
+
+conclusion
+
+It can not be said that the growth of the tooth is relevant to two types of supplements.
+It can be said  a 5% significance level statistically, the intake of vitamin C  is relevant to growth of teeth.
+
+assumption
+
+To prove the assumption that growth of teeth was relevant to the type of supplement, We made a null hypothesis that there is no relevance to growth teeth and the type of supplement  tried to reject .
+
+To prove the assumption that intake of vitamin C  was relevant to growth of teeth, we made a null hypothesis that there is no relevance to the intake  of vitamin C and tooth growth. 
